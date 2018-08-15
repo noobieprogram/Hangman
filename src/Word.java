@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Word {
 
-	private File f = new File("/Users/Abdullah/Documents/Eclipse/Hangman/words.txt");
+	private File f = new File("words.txt");
 	private int length;
 	private ArrayList<String> words = new ArrayList<String>();
 	private int index;
