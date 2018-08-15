@@ -1,6 +1,6 @@
 # Hangman
 
-This is a full-fledged functioning Hangman game that anyone can play. Unlike other Hangman games  on the internet where word possibilities are astoundingly low, this particular game boasts a list of whopping 370093 possible words. Everytime the game is run, a new word is randomly chosen from the list and the user is asked to guess it letter by letter. Furthermore, the user has control of the game as he can set he maximum number of tries. 
+This is a full-fledged functioning Hangman game that anyone can play. Unlike other Hangman games  on the internet where word possibilities are astoundingly low, this particular game boasts a list of whopping 370093 possible words. Everytime the game is run, a new word is randomly chosen from the list and the user is asked to guess it letter by letter. Furthermore, the user has control of the game as he/she can set the maximum number of tries. 
 
 ## How to play?
 
