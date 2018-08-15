@@ -54,7 +54,7 @@ public class Main {
 
 	public static void hangmanImage() {
 		if (count == max_errors) {
-			System.out.println("\nGAME OVER!");
+			System.out.println("GAME OVER!");
 			System.out.println("   ____________");
 			System.out.println("   |          _|_");
 			System.out.println("   |         /   \\");
