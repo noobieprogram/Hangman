@@ -1,58 +1,70 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-	static Scanner sc = new Scanner(System.in);
-	private static int errors = 0; // can also be named as 'score'
-	private final static int max_errors = 11; // maximum number of errors allowed
-	static Random rand = new Random();
-	static char[] chars; // the randomly chosen word is passed to this array
-	static int length; // length of the word
-	static char[] ans_check; // temporary array
+	private static Word word;
+	private static String asterisk;
+	private static int count = 0;
+	private static Random rand = new Random();
+	private static int max_errors;
 
-	// does all the character checking and error counting
-	public static void error() {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		word = new Word(rand.nextInt(370093));
+		asterisk = new String(new char[word.getLength()]).replace("\0", "*");
+		
+		System.out.println("How many guesses would you like?");
+		max_errors = sc.nextInt();
+		
+		while (count < max_errors && asterisk.contains("*")) {
+			System.out.println("Guess any letter in the word.");
+			System.out.println(asterisk);
+			String guess = sc.next();
+			hang(guess);
+		}
+		sc.close();
+	}
 
-		while ((errors < max_errors) && (!Arrays.equals(ans_check, chars))) {
-			char c = sc.nextLine().charAt(0); // takes only the first character of entered string
-			for (int i = 0; i < chars.length; i++) {
-				if (c == chars[i]) {
-					ans_check[i] = c;
-				} else {
-					errors++;
-				}
+	public static void hang(String guess) {
+		String correct = "";
+		for (int i = 0; i < word.getLength(); i++) {
+			if (word.getWord().charAt(i) == guess.charAt(0)) {
+				correct += guess.charAt(0);
+			} else if (asterisk.charAt(i) != '*') {
+				correct += word.getWord().charAt(i);
+			} else {
+				correct += "*";
 			}
 		}
-		if (Arrays.equals(ans_check, chars)) {
-			System.out.println("You got it");
-			return;
-		} else if (errors >= max_errors) {
-			System.out.print("You lost!");
-			return;
+
+		if (asterisk.equals(correct)) {
+			count++;
+			int remaining = max_errors - count;
+			System.out.println("You have " + remaining + " tries remaining.");
+			hangmanImage();
+		} else {
+			asterisk = correct;
+		}
+		if (asterisk.equals(word.getWord())) {
+			System.out.println("Correct! You win! The word was " + word.getWord() + "!");
 		}
 	}
 
-	public static void main(String[] args) {
-
-		// A simple start up message
-		System.out.println("Welcome! This is a simple Hangman game. "
-				+ "The rules are simple, everytime the enter key is pressed a new random word is generated. "
-				+ "You are required to enter one character everytime. The result will be displayed once you enter 11 wrong charcters or succeed.");
-
-		String init = sc.nextLine();
-
-		// type "yes" to initiate the game
-		if (init.equals("yes")) {
-			Word word = new Word(rand.nextInt(370093));
-			chars = word.getCharacters();
-			length = word.getLength();
-			ans_check = new char[length];
-			System.out.println(word.getWord());
-			error();
-		} else {
-			System.out.println("wut");
+	public static void hangmanImage() {
+		if (count == max_errors) {
+			System.out.println("\nGAME OVER!");
+			System.out.println("   ____________");
+			System.out.println("   |          _|_");
+			System.out.println("   |         /   \\");
+			System.out.println("   |        |     |");
+			System.out.println("   |         \\_ _/");
+			System.out.println("   |          _|_");
+			System.out.println("   |         / | \\");
+			System.out.println("   |          / \\ ");
+			System.out.println("___|___      /   \\");
+			System.out.println("GAME OVER! The word was " + word.getWord() + "!");
 		}
 	}
 }
