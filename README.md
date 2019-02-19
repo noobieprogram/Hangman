@@ -4,8 +4,8 @@ This is a full-fledged functioning Hangman game that anyone can play. Unlike oth
 
 ## How to play?
 
-The easiest way to play this game is to download the "HangMan.jar" file and then type `java -jar path-to-HangMan.jar` in command prompt/terminal followed by enter. The game will start right away.
+The easiest way to play this game is to download the "HangMan.jar" file and then type `java -jar /path/to/HangMan.jar` in command prompt/terminal followed by enter. The game will start right away.
 
 Another way to run this game is to download the source files and compile them and subsequently use the same command as earlier. 
 
-To play the game again after it has ended, just type `java -jar path-to-HangMan.jar` again and hit enter.
+To play the game again after it has ended, just type `java -jar /path/to/HangMan.jar` again and hit enter.
